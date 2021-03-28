@@ -16,7 +16,7 @@ public class Status {
 
   @GetMapping("/cpu")
   public String cpu() throws IOException {
-    Process process =  Runtime.getRuntime().exec("src/main/resources/status.sh");
+    Process process =  Runtime.getRuntime().exec(new String[]{"sh", "status.sh"});
     BufferedReader br = new BufferedReader(new InputStreamReader(process.getInputStream()));
     String response = br.lines().collect(Collectors.joining("\n"));
     br.close();
